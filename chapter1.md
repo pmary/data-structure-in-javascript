@@ -1,6 +1,8 @@
 #Arrays
 
- Let's start with the most common data structure: The array. Arrays are among the oldest and most important data structures. They are used by almost every program and built-in in every programming language, which makes them usually very efficient. As we will see later, they are also used to implement many other data structures, such as lists and strings.
+ Let's start with the most common data structure: The array.
+Event if you didn’t study computer science in school, you should be familiar with it.
+Arrays are among the oldest and most important data structures. They are used by almost every program and built-in in every programming language, which makes them usually very efficient. As we will see later, they are also used to implement many other data structures, such as lists and strings.
 In this chapter we explore how it work in JavaScript and when to use them.
 
 ##Arrays in JavaScript
