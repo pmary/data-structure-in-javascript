@@ -62,4 +62,5 @@ The difficulty that often arises for us is the fact that problems and their solu
 
 # Why Study Data Structures and Abstract Data Types?
 
-When working on problems and the problem-solving process, use abstractions allow us to focus on the big picture and avoid getting lost in the details.
+When working on the problem-solving process, we need to stay focus on the big picture and avoid getting lost in the details. Abstractions are the perfect conceptual tool for that by allowing us to create models of the problem domain. A such model describe the data that our algorithms will manipulate. We called it a **data abstraction**.  
+An **abstract data type**, sometimes abbreviated **ADT**, is a logical description of how we view the data and the operations that are allowed without regard to how they will be implemented.
