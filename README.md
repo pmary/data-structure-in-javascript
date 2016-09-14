@@ -1,16 +1,16 @@
-# Why this book?
+# 1.1 Why this book?
 
 As a curious JavaScript developer, I was an early adopter of NodeJS. As I was moving to server-side programming, I need to implement data structures like linked lists, stacks and queues and there associated algorithms. Since I am an autodidact without computer science degree, I encountered several issues. Back in 2009, they was nothing about data structure in JavaScript so I have to study it in classic object-oriented languages like Java and C#. Today, things are slowly changing. But I still see many JavaScript developer moving to the server-side, don't know nothing about data structures and why studying them is important.
 Through this guide, I will explain you what are the different data structures, their usages and implementation for server-side as well as their limitation due to JavaScript.
 
 At the end, you will be able to chose the right data structure for the problems you have to solve.
 
-# Getting Started
+# 1.2 Getting Started
 As developers, we are living in a world in rapid evolution. This is especially true in the JavaScript ecosystem and its constant growing number of tools, framworks and platforms. Nonetheless, the basic principles of computer science are still the foundation on which we stand when we use computers to solve problems.
 
 You may have spend a l...
 
-# Defining computer science
+# 1.3 Defining computer science
 Computer science is a discipline that spans theory and practice. In short, it's the study of problems, problem-solving, and the solutions that come out of the problem-solving process. The solution is called an **algorithm**. An algorithm is a step-by-step set of operations for solving a clearly defined problem.
 
 However, consider the fact that some problems may not have a solution. This assumption mean that we have to redefine computer science as the study of solutions to problems as well as the study of problems with no solutions.
@@ -33,7 +33,7 @@ math.sqrt(-4);                    // 2i
 
 This is an example of **procedural abstraction**. We do not necessarily know how the square root is being calculated, but we know what the function is called and how to use it. If we perform the import correctly, we can assume that the function will provide us with the correct results. We know that someone implemented a solution to the square root problem but we only need to know how to use it. This is sometimes referred to as a “black box” view of a process. We simply describe the interface: the name of the function, what is needed (the parameters), and what will be returned.
 
-# Defining programming 
+# 1.4 Defining programming 
 
 **Programming** is the process of taking an algorithm (the formulation of a computing problem) and encoding it into an executable computer program by using a programming language. Without an algorithm there can be no program.
 
@@ -60,8 +60,19 @@ var foo = true;  // foo is now a Boolean
 
 The difficulty that often arises for us is the fact that problems and their solutions are very complex. These simple, language-provided constructs and data types, although certainly sufficient to represent complex solutions, are typically at a disadvantage as we work through the problem-solving process. We need ways to control this complexity and assist with the creation of solutions.
 
-# Why Study Data Structures and Abstract Data Types?
+# 1.5 Why Study Data Structures and Abstract Data Types?
 
 When working on the problem-solving process, we need to stay focus on the big picture and avoid getting lost in the details. Abstractions are the perfect conceptual tool for that by allowing us to create models of the problem domain. A such model describe the data that our algorithms will manipulate. We called it a **data abstraction**.  
-An **abstract data type**, or **ADT**, is a logical description of how we view the data and the allowed operations without regard to how they will be implemented. By providing this level of abstraction, we are creating an encapsulation around the data. By encapsulating the details of the implementation, we are hiding them from the user’s view. This is called **information hiding**.
+An **abstract data type**, or **ADT**, is a logical description of how we view the data and the allowed operations without regard to how they will be implemented. By providing this level of abstraction, we are creating an encapsulation around the data. By encapsulating the details of the implementation, we are hiding them from our view. This is called **information hiding**. This allow us to remain focused on the problem-solving process.  
+
+# 1.6 Why Study Algorithms?
+We learn by experience, by solving problems by ourselves or by following examples. With a deep understanding of how algorithms are designed, it helps us to take on the next challenge. We can begin to develop pattern recognition so that the next time a similar problem arises, we are better able to solve it. Just like we must remember the greatest number of combinations possible at cheese.  
+
+For a given problem, let say compute a square root, there is many different ways to implement the solution. We would like to have some way to compare these solutions in terms of time and resource consumption. By studying algorithms, we learn analysis techniques to do so based solely on their own characteristics. It mean separate them from the characteristics of the program or computer used to implement them.  
+
+The worst case scenario is a problem that is intractable. Meaning that there is no algorithm that can solve it in a realistic amount of time. It is important to be able to distinguish between those problems, those that have solutions and those that do not.  
+
+There will often be trade-offs that we will need to identify and decide upon. In the end, there are often many ways to solve a problem. Finding a solution and then deciding whether it is a good one are tasks that we will do over and over again.
+
+# 1.7 Review of Basic JavaScript  
 
