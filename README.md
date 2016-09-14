@@ -72,7 +72,9 @@ For a given problem, let say compute a square root, there is many different ways
 
 The worst case scenario is a problem that is intractable. Meaning that there is no algorithm that can solve it in a realistic amount of time. It is important to be able to distinguish between those problems, those that have solutions and those that do not.  
 
-There will often be trade-offs that we will need to identify and decide upon. In the end, there are often many ways to solve a problem. Finding a solution and then deciding whether it is a good one are tasks that we will do over and over again.
+In the end, there are often many ways to solve a problem. There will often be trade-offs that we will need to identify and decide upon. This is a tasks that we will do over and over again.
 
 # 1.7 Review of Basic JavaScript  
+
+In this section, we will review the basis of this programming language. If you are new to JavaScript or need more information, don't hesitate to consult a resource such as the dedicated section on the  [Mozilla Developer Network](https://developer.mozilla.org/en/docs/Web/JavaScript). The goal is to familiarize yourself with the language and reinforce the central concepts.
 
