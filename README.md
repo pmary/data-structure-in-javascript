@@ -78,3 +78,5 @@ In the end, there are often many ways to solve a problem. There will often be tr
 
 In this section, we will review the basis of this programming language. If you are new to JavaScript or need more information, don't hesitate to consult a resource such as the dedicated section on the  [Mozilla Developer Network](https://developer.mozilla.org/en/docs/Web/JavaScript). The goal is to familiarize yourself with the language and reinforce the central concepts.
 
+# 1.8 Getting Started with Data  
+JavaScript is object-oriented to the core. It means that data is the focal point of the problem-solving process. JavaScript is a prototype-based language and contains no class statement, such as is found in C++ or Java. In JS, unlike any other object-oriented programming language, 
