@@ -90,15 +90,18 @@ In JavaScript, there are three primary data types, two composite data types, and
 The primary (primitive) data types are String, Number and Boolean.  
 
 **String**   
-Strings are useful for holding data that can be represented in text form. Some of the most-used operations on strings are to check their length, to build and concatenate them using the + and += string operators, checking for the existence or location of substrings with the indexOf() method, or extracting substrings with the substring() method.  
+A String value is a zero or more Unicode characters. They are useful for holding data that can be represented in text form.  
+
+Some of the most-used operations on strings are to check their **length**, to build and concatenate them using the + and **+= string operators**, checking for the existence or location of substrings with the **indexOf()** method, or extracting substrings with the **substring()** method.  
+
+You include string literals in your scripts by enclosing them in single or double quotation marks:  
 
 ```javascript
 var myVar = 'Hello';
 var otherVar = "World";
-var lastVar = `Lorem Ipsum`;
 ```  
 
-Strings can also be created using the String global object directly:  
+They can also be created using the String global object directly:  
 
 ```javascript
 var myVar = String(42);
@@ -106,6 +109,19 @@ console.log(myVar); // "42"
 ```  
 
 **Number**  
+In JavaScript, there is no distinction between integer and floating-point values; a JavaScript number can be either (internally, JavaScript represents all numbers as floating-point values).  
 
+**Boolean**  
 
-**Boolean**
+### Composite Data Types  
+The composite (reference) data types are Object and Array.  
+
+**Object**  
+
+**Array**  
+
+### Special Data Types  
+The special data types are Null and Undefined  
+**Null**  
+
+**Undefined**  
