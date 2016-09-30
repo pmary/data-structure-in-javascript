@@ -79,4 +79,33 @@ In the end, there are often many ways to solve a problem. There will often be tr
 In this section, we will review the basis of this programming language. If you are new to JavaScript or need more information, don't hesitate to consult a resource such as the dedicated section on the  [Mozilla Developer Network](https://developer.mozilla.org/en/docs/Web/JavaScript). The goal is to familiarize yourself with the language and reinforce the central concepts.
 
 # 1.8 Getting Started with Data  
-JavaScript is object-oriented to the core. It means that data is the focal point of the problem-solving process. JavaScript is a prototype-based language and contains no class statement, such as is found in C++ or Java.
+JavaScript is object-oriented to the core. It means that data is the focal point of the problem-solving process. This is also a prototype-based language and contains no class statement, such as is found in C++ or Java.  
+
+> In JavaScript we don't have to define the type of a variable. This type is deducted from the value stored and may change as the program is running. It is said that JavaScript is a **dynamically** typed language. Other languages like C or Java required the definition of variable types. This is called **static** typing.
+
+## 1.8.1 Built-in Data Types  
+In JavaScript, there are three primary data types, two composite data types, and two special data types.  
+
+### Primary Data Types:  
+The primary (primitive) data types are String, Number and Boolean.  
+
+**String**   
+Strings are useful for holding data that can be represented in text form. Some of the most-used operations on strings are to check their length, to build and concatenate them using the + and += string operators, checking for the existence or location of substrings with the indexOf() method, or extracting substrings with the substring() method.  
+
+```javascript
+var myVar = 'Hello';
+var otherVar = "World";
+var lastVar = `Lorem Ipsum`;
+```  
+
+Strings can also be created using the String global object directly:  
+
+```javascript
+var myVar = String(42);
+console.log(myVar); // "42"
+```  
+
+**Number**  
+
+
+**Boolean**
