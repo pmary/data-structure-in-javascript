@@ -118,7 +118,7 @@ In JavaScript, there is no distinction between integer and floating-point values
 The standard arithmetic operations, +, -, \*, and / can be used with parentheses forcing the order of operations away from normal operator precedence.  
 Other very useful operation is the remainder (modulo) operator, %.  
 
-> **Good to know**: The exponentiation operator \*\* is part of the ECMAScript 2016 (ES7) proposal and will eventually be implanted in all browsers when the specification will be stabilized.  
+> **Good to know**: The exponentiation operator \*\* is part of the ECMAScript 2016 (ES7), finalized in June 2016. It will eventually be implanted in all browsers but for the moment check the support before you use it.  
 
 ```javascript
 console.log( 2+3*4 ); // 14
