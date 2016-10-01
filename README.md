@@ -110,6 +110,22 @@ console.log(myVar); // "42"
 
 **Number**  
 In JavaScript, there is no distinction between integer and floating-point values; a JavaScript number can be either (internally, JavaScript represents all numbers as floating-point values).  
+The standard arithmetic operations, +, -, \*, and / can be used with parentheses forcing the order of operations away from normal operator precedence.  
+Other very useful operation is the remainder (modulo) operator, %.  
+
+> **Good to know**: The exponentiation operator \*\* is part of the ECMAScript 2016 (ES7) proposal and will eventually be implanted in all browsers when the specification will be stabilized.  
+
+```javascript
+console.log( 2+3*4 ); // 14
+console.log( (2+3)*4 ); //20
+console.log( 2**10 ); // 1024
+console.log( 6/3 ); // 2
+console.log( 7/3 ); // 2.3333333333333335
+console.log( 7%3 ); // 1
+console.log( 3/6 ); // 0.5
+console.log( 3%6 ); // 3
+console.log( 2**100 ); // 1.2676506002282294e+30
+```
 
 **Boolean**  
 
