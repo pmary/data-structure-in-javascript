@@ -84,12 +84,17 @@ JavaScript is object-oriented to the core. It means that data is the focal point
 > In JavaScript we don't have to define the type of a variable. This type is deducted from the value stored and may change as the program is running. It is said that JavaScript is a **dynamically** typed language. Other languages like C or Java required the definition of variable types. This is called **static** typing.
 
 ## 1.8.1 Built-in Data Types  
-In JavaScript, there are three primary data types, two composite data types, and two special data types.  
+According to the latest ECMAScript release, these are the seven data types:  
+- String
+- Number
+- Boolean
+- Object
+- Symbol (new in ECMAScript 6)
+- Null
+- Undefined
 
-### Primary Data Types:  
-The primary (primitive) data types are String, Number and Boolean.  
-
-**String**   
+### 1.8.1.1 Primitive values  
+#### String   
 A String value is a zero or more Unicode characters. They are useful for holding data that can be represented in text form.  
 
 Some of the most-used operations on strings are to check their **length**, to build and concatenate them using the + and **+= string operators**, checking for the existence or location of substrings with the **indexOf()** method, or extracting substrings with the **substring()** method.  
@@ -108,7 +113,7 @@ var myVar = String(42);
 console.log(myVar); // "42"
 ```  
 
-**Number**  
+#### Number  
 In JavaScript, there is no distinction between integer and floating-point values; a JavaScript number can be either (internally, JavaScript represents all numbers as floating-point values).  
 The standard arithmetic operations, +, -, \*, and / can be used with parentheses forcing the order of operations away from normal operator precedence.  
 Other very useful operation is the remainder (modulo) operator, %.  
@@ -127,17 +132,14 @@ console.log( 3%6 ); // 3
 console.log( 2**100 ); // 1.2676506002282294e+30
 ```
 
-**Boolean**  
+#### Boolean  
+Pretty standard across all languages, booleans are `true` and `false`. They're often used for conditional statements.
 
-### Composite Data Types  
-The composite (reference) data types are Object and Array.  
+#### Symbol  
+This is new in ECMAScript 6. 
 
-**Object**  
+#### Null  
 
-**Array**  
+#### Undefined  
 
-### Special Data Types  
-The special data types are Null and Undefined  
-**Null**  
-
-**Undefined**  
+### 1.8.1.2 Object  
