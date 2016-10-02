@@ -136,7 +136,8 @@ console.log( 2**100 ); // 1.2676506002282294e+30
 Pretty standard across all languages, booleans are `true` and `false`. They're often used for conditional statements.
 
 #### Symbol  
-This is new in ECMAScript 6. 
+This is new in ECMAScript 6, there is no EcmaScript 5 equivalent. A Symbol is a primitive data type whose instances are unique and immutable. In some programming languages they are also called atoms.  
+With Reflect, and Proxy, Symbol is one of the three new APIs that allow us to do metaprogramming.
 
 #### Null  
 
