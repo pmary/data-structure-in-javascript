@@ -135,12 +135,41 @@ console.log( 2**100 ); // 1.2676506002282294e+30
 #### Boolean  
 Pretty standard across all languages, booleans are `true` and `false`. They're often used for conditional statements.
 
+```javascript
+var myBool = new Boolean(false);
+var myBool2 = true;
+```
+
+Since the variable type is dependent to it's value in JavaScript, the following will not be booleans:
+```javascript
+var notABoolean1 = "true"; //string
+var notABoolean2 = 1; //integer
+```
+
 #### Symbol  
 This is new in ECMAScript 6, there is no EcmaScript 5 equivalent. A Symbol is a primitive data type whose instances are unique and immutable. In some programming languages they are also called atoms.  
 With Reflect, and Proxy, Symbol is one of the three new APIs that allow us to do metaprogramming.
 
+You can find more abour symbols on my blog: [Metaprogramming with ES2016 #1 - Symbol](http://pierremary.com/metaprogramming-with-es2016/)
+
 #### Null  
+The value null is what you get when a variable has been defined but has no type or value. We can use it for exemple to assign a default value to a new variable: 
+
+```javascript
+var fool = null;
+console.log(foo); // null
+```
 
 #### Undefined  
+This is a very specific type returned when a variable is used without being declare before
+
+Unfedefined is a very specific constant that is returned when a variable is not declared or when it is declared with no value assigned.
+
+```javascript
+var foo;
+console.log(foo); // undefined
+
+console.log(bar); // throws a ReferenceError
+```
 
 ### 1.8.1.2 Object  
