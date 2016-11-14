@@ -8,4 +8,5 @@
 * [1.6 Why Study Algorithms?](16_why_study_algorithms.md)
 * [1.7 Review of Basic JavaScript](17_review_of_basic_javascript.md)
 * [Arrays](chapter1.md)
+* # 1.8 Setup your environment
 
