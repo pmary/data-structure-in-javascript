@@ -9,5 +9,5 @@
 * [1.7 Review of Basic JavaScript](17_review_of_basic_javascript.md)
 * 1.8 Setup your environment
 * [Arrays](chapter1.md)
-* 1.9 Getting Started with Data
+* [1.9 Getting Started with Data](19_getting_started_with_data.md)
 
