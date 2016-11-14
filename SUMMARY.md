@@ -8,7 +8,7 @@
 * [1.6 Why Study Algorithms?](1_06.md)
 * [1.7 Review of Basic JavaScript](1_07.md)
 * [1.8 Setup your environment](1_08.md)
-* [1.9 Getting Started with Data](19_getting_started_with_data.md)
+* [1.9 Getting Started with Data](1_09.md)
 * [1.10 Input and Output](1_10.md)
 * [Arrays](chapter1.md)
 
