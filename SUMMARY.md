@@ -5,4 +5,5 @@
 * [1.3 Defining computer science](13_defining_computer_science.md)
 * [1.4 Defining programming](14_defining_programming.md)
 * [Arrays](chapter1.md)
+* 1.5 Why Study Data Structures and Abstract Data Types?
 
