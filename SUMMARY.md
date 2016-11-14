@@ -6,7 +6,7 @@
 * [1.4 Defining programming](1_04.md)
 * [1.5 Why Study Data Structures and Abstract Data Types?](1_05.md)
 * [1.6 Why Study Algorithms?](1_06.md)
-* [1.7 Review of Basic JavaScript](17_review_of_basic_javascript.md)
+* [1.7 Review of Basic JavaScript](1_07.md)
 * [1.8 Setup your environment](18_setup_your_environment.md)
 * [1.9 Getting Started with Data](19_getting_started_with_data.md)
 * [1.10 Input and Output](1_10.md)
