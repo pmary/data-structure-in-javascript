@@ -5,12 +5,6 @@ Through this guide, I will explain you what are the different data structures, t
 
 At the end, you will be able to chose the right data structure for the problems you have to solve.
 
-
-# 1.5 Why Study Data Structures and Abstract Data Types?
-
-When working on the problem-solving process, we need to stay focus on the big picture and avoid getting lost in the details. Abstractions are the perfect conceptual tool for that by allowing us to create models of the problem domain. A such model describe the data that our algorithms will manipulate. We called it a **data abstraction**.  
-An **abstract data type**, or **ADT**, is a logical description of how we view the data and the allowed operations without regard to how they will be implemented. By providing this level of abstraction, we are creating an encapsulation around the data. By encapsulating the details of the implementation, we are hiding them from our view. This is called **information hiding**. This allow us to remain focused on the problem-solving process.  
-
 # 1.6 Why Study Algorithms?
 We learn by experience, by solving problems by ourselves or by following examples. With a deep understanding of how algorithms are designed, it helps us to take on the next challenge. We can begin to develop pattern recognition so that the next time a similar problem arises, we are better able to solve it. Just like we must remember the greatest number of combinations possible at cheese.  
 
