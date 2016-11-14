@@ -6,4 +6,5 @@
 * [1.4 Defining programming](14_defining_programming.md)
 * [1.5 Why Study Data Structures and Abstract Data Types?](15_why_study_data_structures_and_abstract_data_typ.md)
 * [Arrays](chapter1.md)
+* 1.6 Why Study Algorithms?
 
