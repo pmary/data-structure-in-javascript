@@ -9,6 +9,6 @@
 * [1.7 Review of Basic JavaScript](17_review_of_basic_javascript.md)
 * [1.8 Setup your environment](18_setup_your_environment.md)
 * [1.9 Getting Started with Data](19_getting_started_with_data.md)
-* [1.10 Input and Output](110_input_and_output.md)
+* [1.10 Input and Output](1_10.md)
 * [Arrays](chapter1.md)
 
