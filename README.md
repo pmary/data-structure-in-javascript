@@ -5,10 +5,7 @@ Through this guide, I will explain you what are the different data structures, t
 
 At the end, you will be able to chose the right data structure for the problems you have to solve.
 
-# 1.2 Getting Started
-As developers, we are living in a world in rapid evolution. This is especially true in the JavaScript ecosystem and its constant growing number of tools, framworks and platforms. Nonetheless, the basic principles of computer science are still the foundation on which we stand when we use computers to solve problems.
 
-You may have spend a l...
 
 # 1.3 Defining computer science
 Computer science is a discipline that spans theory and practice. In short, it's the study of problems, problem-solving, and the solutions that come out of the problem-solving process. The solution is called an **algorithm**. An algorithm is a step-by-step set of operations for solving a clearly defined problem.
@@ -78,12 +75,14 @@ In the end, there are often many ways to solve a problem. There will often be tr
 
 In this section, we will review the basis of this programming language. If you are new to JavaScript or need more information, don't hesitate to consult a resource such as the dedicated section on the  [Mozilla Developer Network](https://developer.mozilla.org/en/docs/Web/JavaScript). The goal is to familiarize yourself with the language and reinforce the central concepts.
 
-# 1.8 Getting Started with Data  
+# 1.8 Setup your environment
+
+# 1.9 Getting Started with Data  
 JavaScript is object-oriented to the core. It means that data is the focal point of the problem-solving process. This is also a prototype-based language and contains no class statement, such as is found in C++ or Java.  
 
 > In JavaScript we don't have to define the type of a variable. This type is deducted from the value stored and may change as the program is running. It is said that JavaScript is a **dynamically** typed language. Other languages like C or Java required the definition of variable types. This is called **static** typing.
 
-## 1.8.1 Built-in Data Types  
+## 1.9.1 Built-in Data Types  
 According to the latest ECMAScript release, these are the seven data types:  
 - String
 - Number
@@ -93,7 +92,7 @@ According to the latest ECMAScript release, these are the seven data types:
 - Null
 - Undefined
 
-### 1.8.1.1 Primitive values  
+### 1.9.1.1 Primitive values  
 #### String   
 A String value is a zero or more Unicode characters. They are useful for holding data that can be represented in text form.  
 
@@ -172,4 +171,44 @@ console.log(foo); // undefined
 console.log(bar); // throws a ReferenceError
 ```
 
-### 1.8.1.2 Object  
+### 1.9.1.2 Object  
+JavaScript is designed on a simple object-based paradigm. An object is a collection of properties, and a property is an association between a name (or key) and a value. A property's value can be a function, in which case the property is known as a method. In addition to objects that are predefined in the browser, you can define your own objects.
+
+# 1.10 Input and Output
+We often have a need to interact with users, either to get data or to provide some sort of result. Most of the time we use an HTML form as a way of asking the user to provide some type of input. In our case, we will avoid this and use much simpler functions.
+
+## 1.10.1 Client side
+JavaScript provides us with a function that allows us to ask a user to enter some data and returns a reference to the data in the form of a string. The function is called `prompt()`.
+
+A prompt dialog contains a single-line textbox, a Cancel button, and an OK button, and returns the (possibly empty) text the user entered into that textbox.
+
+```javascript
+var fruit = prompt("What's your favorite fruit?");
+
+if (fruit.toLowerCase() == "apple") {
+  alert("Wow! I love apples too!");
+}
+```
+
+## 1.10.2 Server side (Node.js)
+On the server, we need to use the `readline` module. It provides an interface for reading data from a Readable stream (such as process.stdin) one line at a time.
+
+```javascript
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question("What's your favorite fruit? ", (answer) => {
+
+  if (answer.toLowerCase() == "apple") {
+    console.log("Wow! I love apples too!");
+  }
+
+  rl.close();
+});
+```
+
+_Note_ Once this code is invoked, the Node.js application will not terminate until the readline.Interface is closed because the interface waits for data to be received on the input stream.
