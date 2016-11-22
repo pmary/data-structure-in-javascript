@@ -10,4 +10,5 @@
 * [1.8 Setup your environment](1_08.md)
 * [1.9 Getting Started with Data](1_09.md)
 * [Arrays](chapter1.md)
+* 1.10 Input and Output
 
