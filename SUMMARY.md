@@ -11,4 +11,5 @@
 * [1.9 Getting Started with Data](1_09.md)
 * [1.10 Input and Output](1_10.md)
 * [Arrays](chapter1.md)
+* 1.11 Control Structures
 
