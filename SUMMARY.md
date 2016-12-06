@@ -13,4 +13,5 @@
 * [1.11 Control Structures](1_11.md)
 * [1.12 Exception Handling](1_12.md)
 * [Arrays](chapter1.md)
+* 1.13 Defining Functions
 
