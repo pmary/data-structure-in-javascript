@@ -13,5 +13,6 @@
 * [1.11 Control Structures](1_11.md)
 * [1.12 Exception Handling](1_12.md)
 * [1.13 Defining Functions](1_13.md)
+* [1.14 Object-Oriented Programming in JavaScript: Defining Classes](114-object-oriented-programming-in-javascript-defining-classes.md)
 * [Arrays](chapter1.md)
 
