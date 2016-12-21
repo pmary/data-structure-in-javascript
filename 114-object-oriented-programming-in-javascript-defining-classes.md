@@ -22,7 +22,7 @@ class Fraction {
 }
 ```
 
-The first method that all classes should provide is the constructor. This is a special method with the name "constructor"  for creating and initializing an object created with a class. To create a `Fraction` object, we will need to provide two pieces of data, the numerator and the denominator. 
+The first method that all classes should provide is the constructor. This is a special method with the name "constructor"  for creating and initializing an object created with a class. To create a `Fraction` object, we will need to provide two pieces of data, the numerator and the denominator.
 
 ```js
 class Fraction {
@@ -57,9 +57,9 @@ class Fraction {
         this.num = top;
         this.den = bottom;
     }
-    
+
     show() {
-        console.log(`${this.num}/${this.den`);
+        console.log(`${this.num}/${this.den}`);
     }
 }
 
@@ -83,7 +83,7 @@ Since we cannot overload operators in JavaScript, we can fix this by providing t
 plus(fraction) {
     let newnum = this.num * fraction.den + this.den * fraction.num;
     let newden = this.den * fraction.den;
-    
+
     return new Fraction(newnum, newden);
 }
 ```
@@ -98,7 +98,7 @@ f3.show();
 
 The `plus` method works as we desire, but one thing could be better. Note that 6/8 is the correct result \(1/4 + 1/2\) but that it is not in the "lowest terms" representation. The best representation would be 3/4. In order to be sure that our results are always in the lowest terms, we need a helper function that knows how to reduce fractions. This function will need to look for the greatest common divisor, or GCD. We can then divide the numerator and the denominator by the GCD and the result will be reduced to lowest terms.
 
-The best-known algorithm for finding a greatest common divisor is Euclid’s Algorithm. It states that the greatest common divisor of two integers _m_ and _n_ is _n_ if _n_ divides _m_ evenly. However, if _n_ does not divide _m_ evenly, then the answer is the greatest common divisor of _n_ and the remainder of _m_ divided by _n_. So we will simply provide an iterative implementation of it. 
+The best-known algorithm for finding a greatest common divisor is Euclid’s Algorithm. It states that the greatest common divisor of two integers _m_ and _n_ is _n_ if _n_ divides _m_ evenly. However, if _n_ does not divide _m_ evenly, then the answer is the greatest common divisor of _n_ and the remainder of _m_ divided by _n_. So we will simply provide an iterative implementation of it.
 
 > Note that this implementation of the GCD algorithm only works when the denominator is positive. This is acceptable for our fraction class because we have said that a negative fraction will be represented by a negative numerator.
 
@@ -111,12 +111,10 @@ gcd(m, n) {
         m = oldn;
         n = oldm%oldn;
     }
-    
+
     return n;
 }
 ```
-
-
 
 Let's wrap it together:
 
@@ -126,14 +124,14 @@ class Fraction {
         this.num = top;
         this.den = bottom;
     }
-    
+
     plus(fraction) {
         let newnum = this.num * fraction.den + this.den * fraction.num;
         let newden = this.den * fraction.den;
-    
+
         return new Fraction(newnum, newden);
     }
-    
+
     gcd(m, n) {
         while (m%n != 0) {
             let oldm = m;
@@ -142,12 +140,12 @@ class Fraction {
             m = oldn;
             n = oldm%oldn;
         }
-    
+
         return n;
     }
-    
+
     show() {
-        console.log(`${this.num}/${this.den`);
+        console.log(`${this.num}/${this.den}`);
     }
 }
 
