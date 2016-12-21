@@ -116,6 +116,12 @@ gcd(m, n) {
 }
 ```
 
+```js
+var f1 = new Fraction(20, 10);
+console.log( f1.gcd() );
+// 10
+```
+
 Let's wrap it together:
 
 ```js
@@ -132,16 +138,18 @@ class Fraction {
         return new Fraction(newnum, newden);
     }
 
-    gcd(m, n) {
-        while (m%n != 0) {
-            let oldm = m;
-            let oldn = n;
+    gcd() {
+        var n = this.num;
+        var d = this.den
+        while (n%d != 0) {
+            let oldm = n;
+            let oldn = d;
 
-            m = oldn;
-            n = oldm%oldn;
+            n = oldn;
+            d = oldm%oldn;
         }
 
-        return n;
+        return d;
     }
 
     show() {
@@ -149,10 +157,9 @@ class Fraction {
     }
 }
 
-var f1 = new Fraction(1, 2);
-var f2 = new Fraction(1, 4);
-f3 = f1.plus(f2);
-console.log(f3.gcd());
+var f1 = new Fraction(20, 10);
+console.log( f1.gcd() );
+// 10
 ```
 
 
