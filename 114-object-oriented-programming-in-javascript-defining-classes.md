@@ -6,5 +6,156 @@ Remember that we use abstract data types to provide the logical description of w
 
 ## 1.14.1. A Fraction Class
 
-A very common example to show the details of implementing a user-defined class is to construct a class to implement the abstract data type `Fraction`. 
+A very common example to show the details of implementing a user-defined class is to construct a class to implement the abstract data type `Fraction`.
+
+A fraction such as `3/5` consists of two parts. The top value, known as the numerator, can be any integer. The bottom value, called the denominator, can be any integer greater than 0 \(negative fractions have a negative numerator\). Although it is possible to create a floating point approximation for any fraction, in this case we would like to represent the fraction as an exact value.
+
+The operations for the `Fraction` type will allow a `Fraction` data object to behave like any other numeric value. We need to be able to add, subtract, multiply, and divide fractions. We also want to be able to show fractions using the standard “slash” form, for example `3/5`. In addition, all fraction methods should return results in their lowest terms so that no matter what computation is performed, we always end up with the most common form.
+
+In JavaScript ES2016, we define a new class by providing a name, a constructor and a set of method definitions that are syntactically similar to function definitions.
+
+```js
+class Fraction {
+  constructor() {
+  }
+  // The methods go here
+}
+```
+
+The first method that all classes should provide is the constructor. This is a special method with the name "constructor"  for creating and initializing an object created with a class. To create a `Fraction` object, we will need to provide two pieces of data, the numerator and the denominator. 
+
+```js
+class Fraction {
+    constructor(top, bottom) {
+        this.num = top;
+        this.den = bottom;
+    }
+}
+```
+
+As described earlier, fractions require two pieces of state data, the numerator and the denominator. The notation `this.num` in the constructor defines the fraction object to have an internal data object called num as part of its state. Likewise, `this.den` creates the denominator. The values of the two formal parameters are initially assigned to the state, allowing the new `fraction` object to know its starting value.
+
+To create an instance of the `Fraction` class, we must invoke the constructor. This happens by using the name of the class and passing actual values for the necessary state \(note that we never directly invoke `constructor`\). For example:
+
+```js
+var myFraction = new Fraction(3, 5);
+```
+
+It creates an object called `myFraction` representing the fraction 3/5 \(three-fifths\). The next thing we need to do is implement the behavior that the abstract data type requires. To begin, consider what happens when we try to print a `Fraction` object.
+
+```js
+var myFraction = new Fraction(3, 5);
+console.log(myFraction);
+// Fraction {num: 3, den: 5}
+```
+
+What it does is printing a reference to the object but we may want to print the fraction state in the proper format. For this, we will create a `show` method that allows us to view the fraction using the standard “slash” form.
+
+```js
+class Fraction {
+    constructor(top, bottom) {
+        this.num = top;
+        this.den = bottom;
+    }
+    
+    show() {
+        console.log(`${this.num}/${this.den`);
+    }
+}
+
+var myFraction = new Fraction(3, 5);
+myFraction.show();
+// 3/5
+```
+
+Next we would like to be able to create two `Fraction` objects and then add them together using the standard "+" notation. At this point, if we try to add two fractions, we get the following:
+
+```js
+var f1 = new Fraction(1, 2);
+var f2 = new Fraction(1, 4);
+f1+f2;
+"[object Object][object Object]"
+```
+
+Since we cannot overload operators in JavaScript, we can fix this by providing the `Fraction` class with a new `plus` method:
+
+```js
+plus(fraction) {
+    let newnum = this.num * fraction.den + this.den * fraction.num;
+    let newden = this.den * fraction.den;
+    
+    return new Fraction(newnum, newden);
+}
+```
+
+```js
+var f1 = new Fraction(1, 2);
+var f2 = new Fraction(1, 4);
+f3 = f1.plus(f2);
+f3.show();
+// 6/8
+```
+
+The `plus` method works as we desire, but one thing could be better. Note that 6/8 is the correct result \(1/4 + 1/2\) but that it is not in the "lowest terms" representation. The best representation would be 3/4. In order to be sure that our results are always in the lowest terms, we need a helper function that knows how to reduce fractions. This function will need to look for the greatest common divisor, or GCD. We can then divide the numerator and the denominator by the GCD and the result will be reduced to lowest terms.
+
+The best-known algorithm for finding a greatest common divisor is Euclid’s Algorithm. It states that the greatest common divisor of two integers _m_ and _n_ is _n_ if _n_ divides _m_ evenly. However, if _n_ does not divide _m_ evenly, then the answer is the greatest common divisor of _n_ and the remainder of _m_ divided by _n_. So we will simply provide an iterative implementation of it. 
+
+> Note that this implementation of the GCD algorithm only works when the denominator is positive. This is acceptable for our fraction class because we have said that a negative fraction will be represented by a negative numerator.
+
+```js
+gcd(m, n) {
+    while (m%n != 0) {
+        let oldm = m;
+        let oldn = n;
+
+        m = oldn;
+        n = oldm%oldn;
+    }
+    
+    return n;
+}
+```
+
+
+
+Let's wrap it together:
+
+```js
+class Fraction {
+    constructor(top, bottom) {
+        this.num = top;
+        this.den = bottom;
+    }
+    
+    plus(fraction) {
+        let newnum = this.num * fraction.den + this.den * fraction.num;
+        let newden = this.den * fraction.den;
+    
+        return new Fraction(newnum, newden);
+    }
+    
+    gcd(m, n) {
+        while (m%n != 0) {
+            let oldm = m;
+            let oldn = n;
+
+            m = oldn;
+            n = oldm%oldn;
+        }
+    
+        return n;
+    }
+    
+    show() {
+        console.log(`${this.num}/${this.den`);
+    }
+}
+
+var f1 = new Fraction(1, 2);
+var f2 = new Fraction(1, 4);
+f3 = f1.plus(f2);
+console.log(f3.gcd());
+```
+
+
 
