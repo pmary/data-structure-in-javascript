@@ -103,7 +103,7 @@ The best-known algorithm for finding a greatest common divisor is Euclid’s Alg
 > Note that this implementation of the GCD algorithm only works when the denominator is positive. This is acceptable for our fraction class because we have said that a negative fraction will be represented by a negative numerator.
 
 ```js
-gcd(m, n) {
+gcd(n = this.num, d = this.den) {
     while (m%n != 0) {
         let oldm = m;
         let oldn = n;
@@ -122,45 +122,108 @@ console.log( f1.gcd() );
 // 10
 ```
 
+Now we can use this function to help reduce any fraction. To put a fraction in lowest terms, we will divide the numerator and the denominator by their greatest common divisor. So, for the fraction 6/8, the greatest common divisor is 2. Dividing the top and the bottom by 2 creates a new fraction, 3/4:
+
+```js
+plus(fraction) {
+    let newnum = this.num * fraction.den + this.den * fraction.num;
+    let newden = this.den * fraction.den;
+    let common = this.gcd(newnum, newden);
+    
+    return new Fraction( Math.trunc(newnum/common), Math.trunc(newden/common) );
+}
+```
+
+```js
+var f1 = new Fraction(1, 4);
+var f2 = new Fraction(1, 2);
+var f3 = f1.plus(f2);
+f3.show();
+// 3/4
+```
+
+> `Math.trunc()` is a new ES6 function. It work like `Math.floor()` but work for negative numbers too.
+
+Our `Fraction` object now has two very useful methods. An additional group of methods that we need to include in our example Fraction class will allow two fractions to compare themselves to one another. Assume we have two Fraction objects, `f1` and `f2`. `f1==f2` will only be True if they are references to the same object. Two different objects with the same numerators and denominators would not be equal under this implementation. This is called **shallow equality**.
+
+```js
+var f1 = new Fraction(1, 4);
+var f2 = new Fraction(1, 4);
+f1==f2;
+// false
+
+var f1 = new Fraction(1, 4);
+var f2 = f1;
+f1==f2;
+// true
+```
+
+We can create **deep equality** by the same value, not the same reference. So we will create a new method called `equal` to compares two objects and returns `True` if their values are the same, `False` otherwise.
+
+```js
+equal(fraction) {
+    let firstNum = this.num * fraction.den;
+    let secondNum = fraction.num * this.den;
+    
+    return firstNum == secondNum;
+}
+```
+
+```js
+var f1 = new Fraction(1, 4);
+var f2 = new Fraction(1, 4);
+f1.equal(f2);
+// true
+
+var f1 = new Fraction(1, 4);
+var f2 = new Fraction(2, 8);
+f1.equal(f2);
+// true
+```
+
 Let's wrap it together:
 
 ```js
 class Fraction {
-    constructor(top, bottom) {
-        this.num = top;
-        this.den = bottom;
+  constructor(top, bottom) {
+    this.num = top;
+    this.den = bottom;
+  }
+
+  plus(fraction) {
+    let newnum = this.num * fraction.den + this.den * fraction.num;
+    let newden = this.den * fraction.den;
+    let common = this.gcd(newnum, newden);
+    
+    return new Fraction( Math.trunc(newnum/common), Math.trunc(newden/common) );
+  }
+
+  gcd(n = this.num, d = this.den) {
+    while (n%d != 0) {
+      let oldm = n;
+      let oldn = d;
+
+      n = oldn;
+      d = oldm%oldn;
     }
 
-    plus(fraction) {
-        let newnum = this.num * fraction.den + this.den * fraction.num;
-        let newden = this.den * fraction.den;
+    return d;
+  }
 
-        return new Fraction(newnum, newden);
-    }
+  equal(fraction) {
+    let firstNum = this.num * fraction.den;
+    let secondNum = fraction.num * this.den;
+    
+    return firstNum == secondNum;
+  }
 
-    gcd() {
-        var n = this.num;
-        var d = this.den
-        while (n%d != 0) {
-            let oldm = n;
-            let oldn = d;
-
-            n = oldn;
-            d = oldm%oldn;
-        }
-
-        return d;
-    }
-
-    show() {
-        console.log(`${this.num}/${this.den}`);
-    }
+  show() {
+    console.log(`${this.num}/${this.den}`);
+  }
 }
-
-var f1 = new Fraction(20, 10);
-console.log( f1.gcd() );
-// 10
 ```
+
+To make sure you understand how operators are implemented in Python classes, and how to properly write methods, write some methods to implement `*`, `/`, and `-` . Also implement comparison operators `>` and `<`.
 
 
 
