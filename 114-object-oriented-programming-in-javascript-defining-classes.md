@@ -235,3 +235,51 @@ By organizing classes in this hierarchical fashion, object-oriented programming 
 
 To explore this idea further, we will construct a **simulation**, an application to simulate digital circuits. The basic building block for this simulation will be the logic gate. These electronic switches represent boolean algebra relationships between their input and their output. In general, gates have a single output line. The value of the output is dependent on the values given on the input lines.
 
+AND gates have two input lines, each of which can be either 0 or 1 \(representing `False` or `True`, repectively\). If both of the input lines have the value 1, the resulting output is 1. However, if either or both of the input lines is 0, the result is 0.   
+OR gates also have two input lines and produce a 1 if one or both of the input values is a 1. In the case where both input lines are 0, the result is 0.
+
+NOT gates differ from the other two gates in that they only have a single input line. The output value is simply the opposite of the input value. If 0 appears on the input, 1 is produced on the output. Similarly, 1 produces 0.
+
+By combining these gates in various patterns and then applying a set of input values, we can build circuits that have logical functions. In order to implement a circuit, we will first build a representation for logic gates. Logic gates are easily organized into a class inheritance hierarchy. At the top of the hierarchy, the `LogicGate` class represents the most general characteristics of logic gates: namely, a label for the gate and an output line. The next level of subclasses breaks the logic gates into two families, those that have one input line and those that have two.
+
+We can now start to implement the classes by starting with the most general, `LogicGate`. As noted earlier, each gate has a label for identification and a single output line. In addition, we need methods to allow a user of a gate to ask the gate for its label.
+
+The other behavior that every logic gate needs is the ability to know its output value. This will require that the gate perform the appropriate logic based on the current input. In order to produce output, the gate needs to know specifically what that logic is. This means calling a method to perform the logic computation. Here is the complete class:
+
+```js
+class LogicGate {
+  constructor(n) {
+    this.label = n;
+    this.output = null;
+  }
+  
+  getLabel() {
+    return this.label;
+  }
+  
+  getOutput() {
+    this.output = this.performGateLogic();
+    return this.output;
+  }
+}
+```
+
+At this point, we will not implement the `performGateLogic` function. The reason for this is that we do not know how each gate will perform its own logic operation. Those details will be included by each individual gate that is added to the hierarchy. This is a very powerful idea in object-oriented programming. We are writing a method that will use code that does not exist yet. The parameter `this` is a reference to the actual gate object invoking the method. Any new logic gate that gets added to the hierarchy will simply need to implement the `performGateLogic` function and it will be used at the appropriate time. Once done, the gate can provide its output value. This ability to extend a hierarchy that currently exists and provide the specific functions that the hierarchy needs to use the new class is extremely important for reusing existing code.
+
+We categorized the logic gates based on the number of input lines. The AND gate has two input lines. The OR gate also has two input lines. NOT gates have one input line. The `BinaryGate` class will be a subclass of `LogicGate` and will add two input lines. The `UnaryGate` class will also subclass `LogicGate` but will have only a single input line. In computer circuit design, these lines are sometimes called "pins" so we will use that terminology in our implementation.
+
+```js
+class BinaryGate extends LogicGate {
+    constructor(n) {
+        this.pinA = null;
+        this.pinB = null;
+    }
+    
+    getPinA() {
+        return
+    }
+}
+```
+
+
+
