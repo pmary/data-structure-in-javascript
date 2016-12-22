@@ -235,7 +235,7 @@ By organizing classes in this hierarchical fashion, object-oriented programming 
 
 To explore this idea further, we will construct a **simulation**, an application to simulate digital circuits. The basic building block for this simulation will be the logic gate. These electronic switches represent boolean algebra relationships between their input and their output. In general, gates have a single output line. The value of the output is dependent on the values given on the input lines.
 
-AND gates have two input lines, each of which can be either 0 or 1 \(representing `False` or `True`, repectively\). If both of the input lines have the value 1, the resulting output is 1. However, if either or both of the input lines is 0, the result is 0.   
+AND gates have two input lines, each of which can be either 0 or 1 \(representing `False` or `True`, repectively\). If both of the input lines have the value 1, the resulting output is 1. However, if either or both of the input lines is 0, the result is 0.  
 OR gates also have two input lines and produce a 1 if one or both of the input values is a 1. In the case where both input lines are 0, the result is 0.
 
 NOT gates differ from the other two gates in that they only have a single input line. The output value is simply the opposite of the input value. If 0 appears on the input, 1 is produced on the output. Similarly, 1 produces 0.
@@ -252,11 +252,11 @@ class LogicGate {
     this.label = n;
     this.output = null;
   }
-  
+
   getLabel() {
     return this.label;
   }
-  
+
   getOutput() {
     this.output = this.performGateLogic();
     return this.output;
@@ -274,7 +274,7 @@ class BinaryGate extends LogicGate {
         this.pinA = null;
         this.pinB = null;
     }
-    
+
     getPinA() {
         return
     }
