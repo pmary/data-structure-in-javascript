@@ -129,7 +129,7 @@ plus(fraction) {
     let newnum = this.num * fraction.den + this.den * fraction.num;
     let newden = this.den * fraction.den;
     let common = this.gcd(newnum, newden);
-    
+
     return new Fraction( Math.trunc(newnum/common), Math.trunc(newden/common) );
 }
 ```
@@ -164,7 +164,7 @@ We can create **deep equality** by the same value, not the same reference. So we
 equal(fraction) {
     let firstNum = this.num * fraction.den;
     let secondNum = fraction.num * this.den;
-    
+
     return firstNum == secondNum;
 }
 ```
@@ -194,7 +194,7 @@ class Fraction {
     let newnum = this.num * fraction.den + this.den * fraction.num;
     let newden = this.den * fraction.den;
     let common = this.gcd(newnum, newden);
-    
+
     return new Fraction( Math.trunc(newnum/common), Math.trunc(newden/common) );
   }
 
@@ -213,7 +213,7 @@ class Fraction {
   equal(fraction) {
     let firstNum = this.num * fraction.den;
     let secondNum = fraction.num * this.den;
-    
+
     return firstNum == secondNum;
   }
 
@@ -224,6 +224,8 @@ class Fraction {
 ```
 
 To make sure you understand how operators are implemented in Python classes, and how to properly write methods, write some methods to implement `*`, `/`, and `-` . Also implement comparison operators `>` and `<`.
+
+## 1.14.2 Inheritance: Logic Gates and Circuits
 
 
 
