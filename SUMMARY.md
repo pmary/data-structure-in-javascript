@@ -16,5 +16,5 @@
 * [1.14 Object-Oriented Programming in JavaScript: Defining Classes](114-object-oriented-programming-in-javascript-defining-classes.md)
 * [Arrays](chapter1.md)
 * [2 Analysis](2-analysis.md)
-* 2.1 What Is Algorithm Analysis?
+* [2.1 What Is Algorithm Analysis?](21-what-is-algorithm-analysis.md)
 
