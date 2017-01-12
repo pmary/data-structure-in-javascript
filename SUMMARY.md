@@ -1,6 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
+* [1.1 Introduction](README.md)
 * [1.2 Getting Started](1_02.md)
 * [1.3 Defining computer science](1_03.md)
 * [1.4 Defining programming](1_04.md)
@@ -15,4 +15,6 @@
 * [1.13 Defining Functions](1_13.md)
 * [1.14 Object-Oriented Programming in JavaScript: Defining Classes](114-object-oriented-programming-in-javascript-defining-classes.md)
 * [Arrays](chapter1.md)
+* [2 Analysis](2-analysis.md)
+* 2.1 What Is Algorithm Analysis?
 
