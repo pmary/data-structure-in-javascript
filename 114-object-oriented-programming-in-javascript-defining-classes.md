@@ -278,7 +278,7 @@ class BinaryGate extends LogicGate {
     getPinA() {
         return prompt(`Enter Pin input for gate ${this.getLabel()}-->`);
     }
-    
+
     getPinB() {
         return prompt(`Enter Pin input for gate ${this.getLabel()}-->`);
     }
@@ -374,10 +374,10 @@ class Connector() {
     constructor(fGate, tGate) {
         this.fromGate = fGate;
         this.toGate = tGate;
-        
+
         tGate.setNextPin(this);
     }
-    
+
     getFrom() {
         return this.fromGate;
     }
@@ -551,7 +551,7 @@ class UnaryGate extends LogicGate {
             return this.pin.getFrom().getOutput();
         }
     }
-    
+
     setNextPin(source) {
         if (this.pin == null) {
             this.pin = source;
