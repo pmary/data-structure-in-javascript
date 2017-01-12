@@ -276,9 +276,336 @@ class BinaryGate extends LogicGate {
     }
 
     getPinA() {
-        return
+        return prompt(`Enter Pin input for gate ${this.getLabel()}-->`);
+    }
+    
+    getPinB() {
+        return prompt(`Enter Pin input for gate ${this.getLabel()}-->`);
+    }
+
+}
+```
+
+```js
+class UnaryGate(LogicGate) {
+    constructor() {
+        this.pin = null;
+    }
+
+    getPin() {
+        return prompt(`Enter Pin input for gate ${this.getLabel()}-->`);
     }
 }
+```
+
+Here we implement the two classes. The constructors in both of these classes start with an explicit call to the constructor of the parent class using the parent’s `constructor` method. When creating an instance of the `BinaryGate` class, we first want to initialize any data items that are inherited from `LogicGate`. In this case, that means the label for the gate. The constructor then goes on to add the two input lines \(`pinA` and `pinB`\). This is a very common pattern that you should always use when building class hierarchies. Child class constructors need to call parent class constructors and then move on to their own distinguishing data.
+
+JavaScript also have a keyword called `super` and used to call functions on an object's parent. It must be used before the `this` keyword can be used. This keyword can also be used to call functions on a parent object.
+
+The only behavior that the `BinaryGate` class adds is the ability to get the values from the two input lines. Since these values come from some external place, we will simply ask the user via an input statement to provide them. The same implementation occurs for the `UnaryGate` class except that there is only one input line.
+
+Now that we have a general class for gates depending on the number of input lines, we can build specific gates that have unique behavior. For example, the `AndGate` class will be a subclass of `BinaryGate` since AND gates have two input lines. As before, the first line of the constructor calls upon the parent class constructor \(`BinaryGate`\), which in turn calls its parent class constructor \(`LogicGate`\). Note that the AndGate class does not provide any new data since it inherits two input lines, one output line, and a label.
+
+```js
+class AndGate(BinaryGate) {
+    constructor(n) {
+        super(n);
+    }
+
+    performGateLogic() {
+        a = this.getPinA()
+        b = this.getPinB()
+        if (a==1 && b==1) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+}
+```
+
+The only thing `AndGate` needs to add is the specific behavior that performs the boolean operation that was described earlier. This is the place where we can provide the `performGateLogic` method. For an AND gate, this method first must get the two input values and then only return 1 if both input values are 1.
+
+We can show the `AndGate` class in action by creating an instance and asking it to compute its output. The following session shows an `AndGate` object, g1, that has an internal label `"G1"`. When we invoke the `getOutput` method, the object must first call its `performGateLogic` method which in turn queries the two input lines. Once the values are provided, the correct output is shown.
+
+```js
+g1 = AndGate("G1");
+g1.getOutput();
+// Enter Pin A input for gate G1-->1
+// Enter Pin B input for gate G1-->0
+0
+```
+
+The same development can be done for OR gates and NOT gates. The `OrGate` class will also be a subclass of `BinaryGate` and the `NotGate` class will extend the `UnaryGate` class. Both of these classes will need to provide their own `performGateLogic` functions, as this is their specific behavior.
+
+We can use a single gate by first constructing an instance of one of the gate classes and then asking the gate for its output \(which will in turn need inputs to be provided\). For example:
+
+```js
+g2 = OrGate("G2");
+g2.getOutput();
+// Enter Pin A input for gate G2-->1
+// Enter Pin B input for gate G2-->1
+1
+
+g2.getOutput();
+// Enter Pin A input for gate G2-->0
+// Enter Pin B input for gate G2-->0
+0
+
+g3 = NotGate("G3");
+g3.getOutput();
+//Enter Pin input for gate G3-->0
+1
+```
+
+Now that we have the basic gates working, we can turn our attention to building circuits. In order to create a circuit, we need to connect gates together, the output of one flowing into the input of another. To do this, we will implement a new class called `Connector`.
+
+The `Connector` class will not reside in the gate hierarchy. It will, however, use the gate hierarchy in that each connector will have two gates, one on either end. It is called the **HAS-A Relationship**. Recall earlier that we used the phrase "**IS-A Relationship**" to say that a child class is related to a parent class, for example `UnaryGate` IS-A `LogicGate`.
+
+> **has-a** \(**has\_a** or **has a**\) is a composition relationship where one object \(often called the constituted object, or part/constituent/member object\) "belongs to" \(is part or member of\) another object \(called the composite type\), and behaves according to the rules of ownership. In simple words, has-a relationship in an object is called a member field of an object. Multiple **has-a** relationships will combine to form a possessive hierarchy.
+
+Now, with the `Connector` class, we say that a `Connector` HAS-A `LogicGate` meaning that connectors will have instances of the `LogicGate` class within them but are not part of the hierarchy. When designing classes, it is very important to distinguish between those that have the IS-A relationship \(which requires inheritance\) and those that have HAS-A relationships \(with no inheritance\).
+
+The following sample show the `Connector` class. The two gate instances within each connector object will be referred to as the `fromGate` and the `toGate`, recognizing that data values will “flow” from the output of one gate into an input line of the next. The call to `setNextPin` is very important for making connections. We need to add this method to our gate classes so that each `toGate` can choose the proper input line for the connection.
+
+```js
+class Connector() {
+    constructor(fGate, tGate) {
+        this.fromGate = fGate;
+        this.toGate = tGate;
+        
+        tGate.setNextPin(this);
+    }
+    
+    getFrom() {
+        return this.fromGate;
+    }
+
+    getTo(self) {
+        return self.toGate;
+    }
+}
+```
+
+In the `BinaryGate` class, for gates with two possible input lines, the connector must be connected to only one line. If both of them are available, we will choose `pinA` by default. If `pinA` is already connected, then we will choose `pinB`. It is not possible to connect to a gate with no available input lines.
+
+```js
+setNextPin(source) {
+    if (this.pinA == null) {
+        this.pinA = source;
+    }
+    else {
+        if (this.pinB == null) {
+            this.pinB = source;
+        }
+        else {
+            throw new Error("Error: NO EMPTY PINS");
+       }
+   }
+}
+```
+
+Now it is possible to get input from two places: externally, as before, and from the output of a gate that is connected to that input line. This requires a change to the `getPinA` and `getPinB` methods \(see the sample at the end of the chapter\). If the input line is not connected to anything \(`null`\), then ask the user externally as before. However, if there is a connection, the connection is accessed and `fromGate`’s output value is retrieved. This in turn causes that gate to process its logic. This continues until all input is available and the final output value becomes the required input for the gate in question. In a sense, the circuit works backwards to find the input necessary to finally produce output.
+
+```js
+getPinA() {
+    if (this.pinA == null) {
+        return prompt(`Enter Pin A input for gate ${this.getLabel()}-->`);
+    }
+    else {
+        return this.pinA.getFrom().getOutput();
+    }
+}
+```
+
+The following fragment show an example of circuit we can now constructs:
+
+```js
+g1 = new AndGate("G1");
+g2 = new AndGate("G2");
+g3 = new OrGate("G3");
+g4 = new NotGate("G4");
+c1 = new Connector(g1, g3);
+c2 = new Connector(g2, g3);
+c3 = new Connector(g3, g4);
+```
+
+The outputs from the two AND gates \(`g1` and `g2`\) are connected to the OR gate \(`g3`\) and that output is connected to the NOT gate \(g4\). The output from the NOT gate is the output of the entire circuit. For example:
+
+```js
+g4.getOutput();
+// Pin A input for gate G1-->0
+// Pin B input for gate G1-->1
+// Pin A input for gate G2-->1
+// Pin B input for gate G2-->1
+0
+```
+
+Here is the complete sample:
+
+```js
+class LogicGate {
+    constructor(n) {
+        this.name = n;
+        this.output = null;
+    }
+
+    getLabel() {
+        return this.name;
+    }
+
+    getOutput() {
+        this.output = this.performGateLogic();
+        return this.output;
+    }
+}
+
+class BinaryGate extends LogicGate {
+    constructor(n) {
+        super(n);
+
+        this.pinA = null;
+        this.pinB = null;
+    }
+
+    getPinA() {
+        if (this.pinA == null) {
+            return parseInt(prompt(`Enter Pin A input for gate ${this.getLabel()}-->`));
+        }
+        else {
+            return this.pinA.getFrom().getOutput();
+        }
+    }
+
+    getPinB() {
+        if (this.pinB == null) {
+            return parseInt(prompt(`Enter Pin A input for gate ${this.getLabel()}-->`));
+        }
+        else {
+            return this.pinB.getFrom().getOutput();
+        }
+    }
+
+    setNextPin(source) {
+        if (this.pinA == null){
+            this.pinA = source;
+        }
+        else {
+            if (this.pinB == null) {
+                this.pinB = source;
+            }
+            else {
+                throw new Error("Cannot Connect: NO EMPTY PINS on this gate");
+            }
+        }
+    }
+}
+
+class AndGate extends BinaryGate {
+    constructor(n) {
+        super(n);
+    }
+
+    performGateLogic() {
+        var a = this.getPinA();
+        var b = this.getPinB();
+        if (a == 1 && b == 1) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+}
+
+class OrGate extends BinaryGate {
+    constructor(n) {
+        super(n);
+    }
+
+    performGateLogic() {
+        var a = this.getPinA();
+        var b = this.getPinB();
+        if (a == 1 || b == 1) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+}
+
+class UnaryGate extends LogicGate {
+    constructor(n) {
+        super(n);
+
+        this.pin = null;
+    }
+
+    getPin() {
+        if (this.pin == null) {
+            return parseInt(prompt(`Enter Pin input for gate ${this.getLabel()}-->`));
+        }
+        else {
+            return this.pin.getFrom().getOutput();
+        }
+    }
+    
+    setNextPin(source) {
+        if (this.pin == null) {
+            this.pin = source;
+        }
+        else {
+            throw new Error("Cannot Connect: NO EMPTY PINS on this gate");
+        }
+    }
+}
+
+class NotGate extends UnaryGate {
+    constructor(n) {
+        super(n);
+    }
+
+    performGateLogic() {
+        if (this.getPin()) {
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
+}
+
+class Connector {
+    constructor(fGate, tGate) {
+        this.fromGate = fGate;
+        this.toGate = tGate;
+
+        tGate.setNextPin(this);
+    }
+
+    getFrom() {
+        return this.fromGate;
+    }
+
+    getTo() {
+        return this.toGate;
+    }
+}
+
+function main() {
+   g1 = new AndGate("G1");
+   g2 = new AndGate("G2");
+   g3 = new OrGate("G3");
+   g4 = new NotGate("G4");
+   c1 = new Connector(g1,g3);
+   c2 = new Connector(g2,g3);
+   c3 = new Connector(g3,g4);
+   console.log(g4.getOutput());
+ }
+
+main();
 ```
 
 
