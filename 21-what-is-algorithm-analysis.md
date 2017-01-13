@@ -28,7 +28,7 @@ function foo(tom) {
        var barney = bill;
        fred = fred + barney;
     }
-    
+
     return fred;
 }
 
@@ -43,15 +43,17 @@ At this point, it is important to think more about what we really mean by comput
 
 As an alternative to space requirements, we can analyze and compare algorithms based on the amount of time they require to execute. This measure is sometimes referred to as the "execution time" or "running time" of the algorithm. One way we can measure the execution time for the function Á is to do a benchmark analysis. This means that we will track the actual time required for the program to compute its result. In JavaScript, we can benchmark a function by noting the starting time and ending time with respect to the system we are using. We can use the `performance.now()` method to returns a DOMHighResTimeStamp, measured in milliseconds, accurate to one thousandth of a millisecond. By calling this function twice, at the beginning and at the end, and then computing the difference, we can get an exact number of seconds \(fractions in most cases\) for execution.
 
+> Server side, `performance.now()` is not available. You should use process.hrtime\(\) instead. It returns the current high-resolution real time in a \[seconds, nanoseconds\] tuple Array.
+
 ```js
 function sumOfN(n) {
    var start = performance.now();
    var theSum = 0
-   
+
    for (var i = 0; i < (n + 1); i++) {
       theSum = theSum + i;
    }
-   
+
    var end = performance.now();
    console.log(`Computed in ${end-start} milliseconds`);
    return theSum;
@@ -61,18 +63,99 @@ console.log(sumOfN(10));
 // Computed in 0.05500000016763806 milliseconds
 ```
 
+Node.JS version
+
+```js
+function sumOfN(n) {
+   var start = process.hrtime();
+   var theSum = 0
+
+   for (var i = 0; i < (n + 1); i++) {
+      theSum = theSum + i;
+   }
+
+   var end = process.hrtime(start);
+   end = end[0] * 1000000 + end[1] / 1000;
+   console.log(`Computed in ${end} milliseconds`);
+   return theSum;
+}
+
+console.log(sumOfN(10));
+// Computed in 128.915 milliseconds
+```
+
 In the code above you can see that the `sumOfN` function now log the time elapsed between the start and then end of it's execution. If we perform 5 invocations of the function, each computing the sum of the first 10,000 integers, we get the following:
 
 ```js
 for (let i = 0; i < 5; i++) {
     sumOfN(10000);
 }
-// Computed in 0.05499999993480742 milliseconds
-// Computed in 0.0849999999627471 milliseconds
-// Computed in 0.05499999993480742 milliseconds
-// Computed in 0.08500000019557774 milliseconds
-// Computed in 0.01500000013038516 milliseconds
+// Computed in 14.96 milliseconds
+// Computed in 14.791 milliseconds
+// Computed in 13.868 milliseconds
+// Computed in 13.997 milliseconds
+// Computed in 14.462 milliseconds
 ```
 
+We discover that the time is fairly consistent and it takes on average about 14.4156 milliseconds to execute that code. What if we run the function adding the first 100,000 integers?
 
+```js
+for (let i = 0; i < 5; i++) {
+    sumOfN(100000);
+}
+// Computed in 152.101 milliseconds
+// Computed in 174.257 milliseconds
+// Computed in 153.963 milliseconds
+// Computed in 158.269 milliseconds
+// Computed in 153.325 milliseconds
+```
+
+In this case, the average is 158.3829, about 10 times the previous. For `n` equal to 1,000,000 we get:
+
+```js
+for (let i = 0; i < 5; i++) {
+    sumOfN(100000);
+}
+// Computed in 1451.723 milliseconds
+// Computed in 1487.598 milliseconds
+// Computed in 1498.227 milliseconds
+// Computed in 1436.73 milliseconds
+// Computed in 1459.882 milliseconds
+```
+
+This time we found the average is 1466.8319,  again, it's close to 10 times the previous.
+
+Now, consider the code below. It shows a different means of solving the summation problem. This function, takes advantage of a closed equation $$\sum_{i=1}^{n} i = \frac {(n)(n+1)}{2}$$ to compute the sum of the first `n` integers without iterating.
+
+```js
+function sumOfN2(n) {
+   var start = performance.now();
+   
+   var result = (n*(n+1))/2;
+   
+   var end = performance.now();
+   
+   console.log(`Computed in ${end-start} milliseconds`);
+   
+   return result;
+}
+
+console.log(sumOfN2(10));
+```
+
+If we do the same benchmark measurement for `sumOfN2`, using five different values for `n` \(10,000, 100,000, 1,000,000, 10,000,000, and 100,000,000\), we get the following results:
+
+```js
+// 10,000 => 0.4638ms
+// 100,000 => 0.5874ms
+// 1,000,000 => 0.5040ms
+// 10,000,000 => 0.5166ms
+// 100,000,000 => 0.4958ms
+```
+
+There are two important things to notice about this output. First, the times recorded above are shorter than any of the previous examples. Second, they are very consistent no matter what the value of `n`. It appears that sumOfN2 is hardly impacted by the number of integers being added.
+
+But what does this benchmark really tell us? Intuitively, we can see that the iterative solutions seem to be doing more work since some program steps are being repeated. This is likely the reason it is taking longer. Also, the time required for the iterative solution seems to increase as we increase the value of `n`. However, there is a problem. If we ran the same function on a different computer or used a different programming language, we would likely get different results. It could take even longer to perform `sumOfN2` if the computer were older.
+
+We need a better way to characterize these algorithms with respect to execution time. The benchmark technique computes the actual time to execute. It does not really provide us with a useful measurement, because it is dependent on a particular machine, program, time of day, compiler, and programming language. Instead, we would like to have a characterization that is independent of the program or computer being used. This measure would then be useful for judging the algorithm alone and could be used to compare algorithms across implementations.
 

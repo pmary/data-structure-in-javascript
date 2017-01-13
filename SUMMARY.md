@@ -17,4 +17,5 @@
 * [Arrays](chapter1.md)
 * [2 Analysis](2-analysis.md)
 * [2.1 What Is Algorithm Analysis?](21-what-is-algorithm-analysis.md)
+* [2.2 Big-O Notation](22-big-o-notation.md)
 
