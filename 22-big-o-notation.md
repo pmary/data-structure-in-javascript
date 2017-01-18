@@ -12,3 +12,48 @@ In the above example, $$T(n)=1+n$$. As n gets large, the constant 1 will become 
 
 As another example, suppose that for some algorithm, the exact number of steps is $$T(n)=5n2+27n+1005$$. When n is small, say 1 or 2, the constant 1005 seems to be the dominant part of the function. However, as n gets larger, the $$n^2$$ term becomes the most important. In fact, when n is really large, the other two terms become insignificant in the role that they play in determining the final result. Again, to approximate $$T(n)$$ as n gets large, we can ignore the other terms and focus on $$5^2$$. In addition, the coefficient $$5$$ becomes insignificant as n gets large. We would say then that the function $$T(n)$$ has an order of magnitude $$f(n)=n2$$, or simply that it is $$O(n2)$$.
 
+Although we do not see this in the summation example, sometimes the performance of an algorithm depends on the exact values of the data rather than simply the size of the problem. For these kinds of algorithms we need to characterize their performance in terms of best case, **worst case**, or **average case **performance. The worst case performance refers to a particular data set where the algorithm performs especially poorly. Whereas a different data set for the exact same algorithm might have extraordinarily good performance. However, in most cases the algorithm performs somewhere in between these two extremes \(average case\). It is important for a computer scientist to understand these distinctions so they are not misled by one particular case.
+
+A number of very common order of magnitude functions will come up over and over as you study algorithms. These are shown in the table below. In order to decide which of these functions is the dominant part of any $$x = y$$ function, we must see how they compare with one another as n gets large.
+
+| f\(n\) | name |
+| :--- | :--- |
+| 1 | Constant |
+| log _n_ | Logarithmic |
+| _n_ | Linear |
+| _n_ log _n_ | Log linear |
+| $$n^2$$ | Quadratic |
+| $$n^3$$ | Cubic |
+| $$2^n$$ | Exponential |
+
+The following figure shows graphs of the common functions form the table. Notice that when _n_ is small, the functions are not very well defined with respect to one another. It is hard to tell which is dominant. However, as _n_ grows, there is a definite relationship and it is easy to see how they compare with one another.
+
+![](/assets/newplot.png)
+
+As a final example, suppose that we have the fragment of JavaScript code shown in below. Although this program does not really do anything, it is instructive to see how we can take actual code and analyze performance.
+
+```js
+var a = 5;
+var b = 6;
+var c = 10;
+
+for (var i = 0; i < n; i++) {
+   for (var j = 0; j < n; j++) {
+      var x = i * i;
+      var y = j * j;
+      var z = i * j;
+   }
+}
+for (var k = 0; k < n; k++) {
+   var w = a * k + 45;
+   var v = b * b;
+}
+var d = 33;
+```
+
+The number of assignment operations is the sum of four terms. The first term is the constant 3, representing the three assignment statements at the start of the fragment. The second term is $$3n2$$, since there are three statements that are performed   $$n2$$ times due to the nested iteration. The third term is $$2n$$, two statements iterated n times. Finally, the fourth term is the constant 1, representing the final assignment statement. This gives us $$T(n)=3+3n2+2n+1=3n2+2n+4$$. By looking at the exponents, we can easily see that the $$n2$$ term will be dominant and therefore this fragment of code is $$O(n2)$$. Note that all of the other terms as well as the coefficient on the dominant term can be ignored as n grows larger.
+
+![](/assets/newplot2.png)
+
+It shows a few of the common Big-O functions as they compare with the $$T(n)$$ function discussed above. Note that $$T(n)$$ is initially larger than the cubic function. However, as n grows, the cubic function quickly overtakes $$T(n)$$. It is easy to see that $$T(n)$$ then follows the quadratic function as $$n$$ continues to grow.
+
