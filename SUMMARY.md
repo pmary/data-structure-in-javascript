@@ -18,5 +18,6 @@
 * [2.1 What Is Algorithm Analysis?](21-what-is-algorithm-analysis.md)
 * [2.2 Big-O Notation](22-big-o-notation.md)
 * [2.3 An Anagram Detection Example](23-an-anagram-detection-example.md)
+* [2.4 Performance of JavaScript Data Structure](2.4-performance-of-javascript-data-structure.md)
 * [Arrays](chapter1.md)
 
