@@ -19,5 +19,6 @@
 * [2.2 Big-O Notation](22-big-o-notation.md)
 * [2.3 An Anagram Detection Example](23-an-anagram-detection-example.md)
 * [2.4 Performance of JavaScript Data Structure](2.4-performance-of-javascript-data-structure.md)
+* [3 Basic Data Structures](3-basic-data-structures.md)
 * [Arrays](chapter1.md)
 
