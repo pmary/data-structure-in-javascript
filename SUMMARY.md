@@ -21,6 +21,7 @@
 * [2.4 Performance of JavaScript Data Structure](2.4-performance-of-javascript-data-structure.md)
 * [3 Basic Data Structures](3-basic-data-structures.md)
 * [3.1. What Are Linear Structures?](3.1.-what-are-linear-structures.md)
-* [3.2 Stacks](3.2-stacks.md)
+* [3.2 Stack](3.2-stacks.md)
+* [3.3 Queue](3.3-queue.md)
 * [Arrays](chapter1.md)
 
