@@ -23,5 +23,6 @@
 * [3.1 What Are Linear Structures?](3.1.-what-are-linear-structures.md)
 * [3.2 Stack](3.2-stacks.md)
 * [3.3 Queue](3.3-queue.md)
+* [3.4 Deque](3.4-deque.md)
 * [Arrays](chapter1.md)
 
