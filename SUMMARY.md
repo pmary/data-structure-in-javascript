@@ -25,5 +25,6 @@
 * [3.3 Queue](3.3-queue.md)
 * [3.4 Deque](3.4-deque.md)
 * [3.5 List](3.5-list.md)
+* [4 Recursion](4-recursion.md)
 * [Arrays](chapter1.md)
 
