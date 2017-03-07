@@ -26,5 +26,7 @@
 * [3.4 Deque](3.4-deque.md)
 * [3.5 List](3.5-list.md)
 * [4 Recursion](4-recursion.md)
+* [4.1 What is Recursion?](4.1-what-is-recursion.md)
+* [4.3 Calculating the Sum of a List of Numbers](4.3-calculating-the-sum-of-a-list-of-numbers.md)
 * [Arrays](chapter1.md)
 
