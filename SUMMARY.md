@@ -28,5 +28,6 @@
 * [4 Recursion](4-recursion.md)
 * [4.1 What is Recursion?](4.1-what-is-recursion.md)
 * [4.3 Calculating the Sum of a List of Numbers](4.3-calculating-the-sum-of-a-list-of-numbers.md)
+* [4.4 The Three Laws of Recursion](4.4-the-three-laws-of-recursion.md)
 * [Arrays](chapter1.md)
 
