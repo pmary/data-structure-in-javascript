@@ -29,5 +29,8 @@
 * [4.1 What is Recursion?](4.1-what-is-recursion.md)
 * [4.3 Calculating the Sum of a List of Numbers](4.3-calculating-the-sum-of-a-list-of-numbers.md)
 * [4.4 The Three Laws of Recursion](4.4-the-three-laws-of-recursion.md)
+* [4.5 Converting an Integer to a String in Any Base](4.5-converting-an-integer-to-a-string-in-any-base.md)
+* [4.6 Stack Frames: Implementing Recursion](4.6-stack-frames-implementing-recursion.md)
+* [4.7 Introduction: Visualizing Recursion](4.7-introduction-visualizing-recursion.md)
 * [Arrays](chapter1.md)
 
