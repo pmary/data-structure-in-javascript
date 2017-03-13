@@ -32,5 +32,6 @@
 * [4.4 Converting an Integer to a String in Any Base](4.5-converting-an-integer-to-a-string-in-any-base.md)
 * [4.5 Stack Frames: Implementing Recursion](4.6-stack-frames-implementing-recursion.md)
 * [4.6 Introduction: Visualizing Recursion](4.7-introduction-visualizing-recursion.md)
+* [4.7 Sierpinski Triangle](47-sierpinski-triangle.md)
 * [Arrays](chapter1.md)
 
