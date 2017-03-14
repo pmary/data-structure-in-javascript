@@ -33,5 +33,6 @@
 * [4.5 Stack Frames: Implementing Recursion](4.6-stack-frames-implementing-recursion.md)
 * [4.6 Introduction: Visualizing Recursion](4.7-introduction-visualizing-recursion.md)
 * [4.7 Sierpinski Triangle](47-sierpinski-triangle.md)
+* [4.8 Complex Recursive Problems](48-complex-recursive-problems.md)
 * [Arrays](chapter1.md)
 
