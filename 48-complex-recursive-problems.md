@@ -8,5 +8,9 @@ The Tower of Hanoi puzzle was invented by the French mathematician Edouard Lucas
 
 Although the legend is interesting, you need not worry about the world ending any time soon. The number of moves required to correctly move a tower of 64 disks is $$2^{64}-1 = 18,446,744,073,709,551,615$$. At a rate of one move per second, that is $$584,942,417,355$$ years! Clearly there is more to this puzzle than meets the eye.
 
+Notice that, as the rules specify, the disks on each peg are stacked so that smaller disks are always on top of the larger disks. If you have not tried to solve this puzzle before, you should try it now. You do not need fancy disks and poles–a pile of books or pieces of paper will work.
+
 ![](/assets/tower_of_hanoi.jpg)
+
+
 
