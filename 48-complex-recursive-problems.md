@@ -16,13 +16,39 @@ Notice that, as the rules specify, the disks on each peg are stacked so that sma
 
 ![](/assets/tower_of_hanoi.jpg)
 
-How do we go about solving this problem recursively? How would you go about solving this problem at all? What is our base case? Let’s think about this problem from the bottom up. Suppose you have a tower of five disks, originally on the first peg.
+How do we go about solving this problem recursively? How would you go about solving this problem at all? What is our base case? Let’s think about this problem from the bottom up. Suppose you have a tower of five disks, originally on the first peg. Our base case will be to move a single disk to peg three.
 
 Here is a high-level outline of how to move a tower from the starting pole, to the goal pole, using an intermediate pole:
 
 1. Move a tower of height-1 to an intermediate pole, using the final pole.
 2. Move the remaining disk to the final pole.
 3. Move the tower of height-1 from the intermediate pole to the final pole using the original pole.
+
+As long as we always obey the rule that the larger disks remain on the bottom of the stack, we can use the three steps above recursively, treating any larger disks as though they were not even there. The only thing missing from the outline above is the identification of a base case. The simplest Tower of Hanoi problem is a tower of one disk. In this case, we need move only a single disk to its final destination. A tower of one disk will be our base case. In addition, the steps outlined above move us toward the base case by reducing the height of the tower in steps 1 and 3.
+
+```js
+function moveTower(height, fromPole, toPole, withPole) {
+    if (height >= 1) {
+        moveTower(height - 1, fromPole, withPole, toPole);
+        moveDisk(fromPole, toPole);
+        moveTower(height - 1, withPole, toPole, fromPole);
+    }
+}
+
+function moveDisk(fp,tp) {
+    console.log('moving disk from', fp, 'to', tp);
+}
+
+moveTower(3, 'A', 'B', 'C');
+
+// moving disk from A to B
+// moving disk from A to C
+// moving disk from B to C
+// moving disk from A to B
+// moving disk from C to A
+// moving disk from C to B
+// moving disk from A to B
+```
 
 
 
